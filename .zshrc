@@ -31,6 +31,9 @@ zinit light zsh-users/zsh-autosuggestions
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# Aliases
+alias ls='ls --color'
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -45,3 +48,4 @@ setopt hist_ignore_dups
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
