@@ -34,6 +34,7 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::helm
 zinit snippet OMZP::terraform
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::ssh-agent
 
 # May not be required with zinit?
 # autoload -U compinit && compinit
@@ -60,10 +61,13 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' id_ed25519
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no # Works with fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle :omz:plugins:ssh-agent identities id_ed25519
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
 # Shell integrations
 # FZF_VERSION=$(curl -s "https://api.github.com/repos/junegunn/fzf/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
